@@ -44,10 +44,10 @@ public class MainActivity extends Activity implements OnClickListener, OnRatingB
 
  EditText keyword,keyword2;
  RatingBar rate;
- String term="",entity="musicVideo";
- Button search,play,save,database,lyrics;
+ String term="",entity="musicVideo",artistId;
+ Button search,play,save,database,lyrics,More;
  WebView ourBrowser;
-TextView tv1,tv2,tv3;
+TextView tv1,tv2,tv3,tv4;
 HttpClient client;
 String returned=" ";
 String ultimate,song_lyr;
@@ -58,6 +58,7 @@ String artist,song;
 
 static String URL= "https://itunes.apple.com/search?";
 static String URL2="http://lyrics.wikia.com/api.php?func=getSong&artist=";
+static String URL3= "https://itunes.apple.com/lookup?";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,10 +80,12 @@ static String URL2="http://lyrics.wikia.com/api.php?func=getSong&artist=";
   	tv1=(TextView)findViewById(R.id.tv1);
   	tv2=(TextView)findViewById(R.id.tv2);
   	tv3=(TextView)findViewById(R.id.tv3);
+  	tv4=(TextView)findViewById(R.id.tv4);
   	search=(Button)findViewById(R.id.b1);
 	save=(Button)findViewById(R.id.b3);
 	database=(Button)findViewById(R.id.b4);
 	lyrics=(Button)findViewById(R.id.b5);
+	More=(Button)findViewById(R.id.b6);
   	ourBrowser=(WebView)findViewById(R.id.wb1);
   	search.setOnClickListener(this);
   	play=(Button)findViewById(R.id.b2);
@@ -90,6 +93,7 @@ static String URL2="http://lyrics.wikia.com/api.php?func=getSong&artist=";
   	save.setOnClickListener(this);
   	database.setOnClickListener(this);
   	lyrics.setOnClickListener(this);
+  	More.setOnClickListener(this);
   	rate=(RatingBar)findViewById(R.id.rb1);
 	rate.setOnRatingBarChangeListener(this);
   	
@@ -185,6 +189,8 @@ static String URL2="http://lyrics.wikia.com/api.php?func=getSong&artist=";
 		case R.id.b2:
 			term=keyword2.getText().toString();
 			new Read2().execute("artworkUrl100");
+			More.setEnabled(true);
+			More.setText("More By"+ artist);
 		    break;
 		case R.id.b3:
 			Boolean didItWork = true;
@@ -224,7 +230,9 @@ static String URL2="http://lyrics.wikia.com/api.php?func=getSong&artist=";
 		case R.id.b5:
 			new Read3().execute("lyrics");
 			
-			
+		    break;
+		case R.id.b6:
+			new ReadMore().execute("trackName","releaseDate","trackViewUrl");
 		    break;
 		}
 	}
@@ -250,6 +258,7 @@ static String URL2="http://lyrics.wikia.com/api.php?func=getSong&artist=";
 				String s7=arr.getJSONObject(0).getString("trackExplicitness");
 				String s8=arr.getJSONObject(0).getString("trackViewUrl");
 				String s9=arr.getJSONObject(0).getString("releaseDate");
+				artistId=arr.getJSONObject(0).getString("artistId");
 				
 				 String[] strArr={s0,s1,s2,s3,s4,s5,s6,s7,s8,s9};
 				return strArr;
@@ -366,7 +375,75 @@ static String URL2="http://lyrics.wikia.com/api.php?func=getSong&artist=";
 		}
     }
 	
+    public JSONArray More(String username)throws ClientProtocolException,IOException,JSONException{
+		StringBuilder url= new StringBuilder(URL3);
+		url.append(username);
+		
+		HttpGet get =new HttpGet(url.toString());
+		HttpResponse r= client.execute(get);
+		int status=r.getStatusLine().getStatusCode();
+		if(status==200){
+			HttpEntity e=r.getEntity();
+			String data=EntityUtils.toString(e);
 
+     		JSONObject obj=new JSONObject(data);
+     		
+     		
+     		JSONArray timeline = obj.getJSONArray("results");
+
+     		return timeline;
+     		
+     	
+		}
+		else{
+			t=Toast.makeText(MainActivity.this,"error",Toast.LENGTH_SHORT);
+			t.show();
+			return null;
+		}
+	}
+    public class ReadMore extends AsyncTask<String, Integer, String>{
+
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			try {
+                String a="id=" + artistId + "&entity=musicVideo&limit=5&sort=recent";
+				arr=More(a);
+				for (int i = 1; i < arr.length(); i++){
+				String s1=arr.getJSONObject(i).getString("trackName");
+				String s2=arr.getJSONObject(i).getString("releaseDate");
+				String s3=arr.getJSONObject(i).getString("trackViewUrl");
+				
+				
+				ultimate=ultimate + s1 + "   performed on  " + s2+ "   " + s3+ "\n";}
+				
+				
+				return ultimate;
+				
+			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+				
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+				
+			}
+			return null;
+		}
+		
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			tv4.setText(result);
+		}
+    }
     
 }
 
