@@ -18,7 +18,7 @@ public class DataM {
 	public static final String KEY_LENGHT = "lenght_name";
 	public static final String KEY_EXPLICITNESS = "exp_name";
 	public static final String KEY_LYRICS = "lyrics_name";
-	public static final String KEY_TAG = "tag_name";
+	public static final String KEY_URL = "tag_name";
 	public static final String KEY_SCORE = "score_sum";
 //	public static final String KEY_COMMENT = "com_sum";
 //	public static final String KEY_SUM5 = "mem5_sum";
@@ -26,8 +26,8 @@ public class DataM {
 //	public static final String KEY_DES  = "group_des";
 	
 	
-	private static final String DATABASE_NAME = "MainDbThree";
-	private static final String DATABASE_TABLE = "mainTableThree";
+	private static final String DATABASE_NAME = "MainDbtwo";
+	private static final String DATABASE_TABLE = "mainTabletwo";
 	private static final int DATABASE_VERSION = 1;
 	
 	
@@ -54,12 +54,10 @@ public class DataM {
 					 KEY_COUNTRY + " TEXT NOT NULL, " +
 					 KEY_LENGHT + " TEXT NOT NULL, " +
 					 KEY_EXPLICITNESS + " TEXT NOT NULL, " +
+					 KEY_URL + " TEXT NOT NULL, " +
 					 KEY_LYRICS + " TEXT NOT NULL, " +
-					 KEY_TAG + " TEXT NOT NULL, " +
-					 KEY_SCORE + " INTEGER);"
-//					 KEY_COMMENT + " TEXT NOT NULL, " +
-//					 KEY_SUM5 + " INTEGER, " +
-//					 KEY_SUM6 + " INTEGER, " +
+					 KEY_SCORE + " TEXT NOT NULL);"
+
 //					 KEY_DES + " TEXT NOT NULL);"
                      );
 			
@@ -86,11 +84,10 @@ public class DataM {
 	public void close(){
 		ourHelper.close();
 	}
-	public long createEntry(String name, String artist, String date, String genre, String country, String lenght, String ex, String lyrics, String tag, int score) {
+	public long createEntry(String name, String artist, String date, String genre, String country, String lenght, String ex, String url, String lyrics, String score) {
 		// TODO Auto-generated method stub
 		ContentValues cv=new ContentValues();
-		int zero=0;
-		String des="";
+		
 		cv.put(KEY_NAME, name);
 		cv.put(KEY_ARTIST, artist);
 		cv.put(KEY_DATE,date);
@@ -99,18 +96,15 @@ public class DataM {
 		cv.put(KEY_LENGHT, lenght);
 		cv.put(KEY_EXPLICITNESS,ex);
 		cv.put(KEY_LYRICS, lyrics);
-		cv.put(KEY_TAG,tag);
+		cv.put(KEY_URL,url);
 		cv.put(KEY_SCORE, score);
-//		cv.put(KEY_COMMENT,mem5);
-//		cv.put(KEY_SUM6,zero);
-//		cv.put(KEY_MEM6,mem6);
-//		cv.put(KEY_DES, des);
+
     	return ourDatabase.insert(DATABASE_TABLE, null, cv);
 		
 	}
 	public String getData() throws SQLException {
 		// TODO Auto-generated method stub
-		String[] columns =new String[]{KEY_ROWID, KEY_NAME, KEY_ARTIST, KEY_DATE, KEY_GENRE, KEY_COUNTRY, KEY_LENGHT, KEY_EXPLICITNESS, KEY_LYRICS, KEY_TAG, KEY_SCORE};
+		String[] columns =new String[]{KEY_ROWID, KEY_NAME, KEY_ARTIST, KEY_DATE, KEY_GENRE, KEY_COUNTRY, KEY_LENGHT, KEY_EXPLICITNESS, KEY_URL, KEY_LYRICS, KEY_SCORE};
 		Cursor c= ourDatabase.query(DATABASE_TABLE, columns, null, null, null, null, null);
 		 String result="";
 		 int iRow=c.getColumnIndex(KEY_ROWID);
@@ -121,8 +115,8 @@ public class DataM {
 		 int iMem4=c.getColumnIndex(KEY_COUNTRY);
 		 int iMem5=c.getColumnIndex(KEY_LENGHT);
 		 int iMem6=c.getColumnIndex(KEY_EXPLICITNESS);
-		 int iSum1=c.getColumnIndex(KEY_LYRICS);
-		 int iSum2=c.getColumnIndex(KEY_TAG);
+		 int iSum1=c.getColumnIndex(KEY_URL);
+		 int iSum2=c.getColumnIndex(KEY_LYRICS);
 		 int iSum3=c.getColumnIndex(KEY_SCORE);
 //		 int iSum4=c.getColumnIndex(KEY_COMMENT);
 //		 int iSum5=c.getColumnIndex(KEY_SUM5);
@@ -132,25 +126,24 @@ public class DataM {
 		 for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
 			 result=result+ c.getString(iRow) +"  "+ c.getString(iName)+ "    " +
 					 c.getString(iMem1)+ " " +
-					 c.getString(iSum1)+ "  " +
 					 c.getString(iMem2)+ " " +
-					 c.getString(iSum2)+ "  " +
 					 c.getString(iMem3)+ " " +
-					 c.getInt(iSum3)+ "  " +
 					 c.getString(iMem4)+ " " +
-					 //c.getInt(iSum4)+ "  " +
 					 c.getString(iMem5)+ " " +
-					// c.getInt(iSum5)+ "  " +
-					 c.getString(iMem6)+ "\n" ;
-					// c.getInt(iSum6) + "\n";
+					 c.getString(iMem6)+ " " +
+					 c.getString(iSum1)+ "  " +
+					// c.getString(iSum2)+ "  " +
+					 c.getInt(iSum3)+ " \n" ;
+					
+					
 			 
 		 }
 		 
 		 return result;
 	}
-	public String[] getDetails(long l) throws SQLException{
+	public String getDetails(long l) throws SQLException{
 		// TODO Auto-generated method stub
-		String[] columns =new String[]{KEY_ROWID, KEY_NAME,  KEY_ARTIST, KEY_DATE, KEY_GENRE, KEY_COUNTRY, KEY_LENGHT, KEY_EXPLICITNESS, KEY_LYRICS, KEY_TAG, KEY_SCORE};
+		String[] columns =new String[]{KEY_ROWID, KEY_NAME,  KEY_ARTIST, KEY_DATE, KEY_GENRE, KEY_COUNTRY, KEY_LENGHT, KEY_EXPLICITNESS, KEY_URL, KEY_LYRICS, KEY_SCORE};
 		Cursor c=ourDatabase.query(DATABASE_TABLE, columns, KEY_ROWID + "=" + l, null, null, null, null);
 		if(c!=null){
 			c.moveToFirst();
@@ -164,7 +157,7 @@ public class DataM {
 			String s8=c.getString(8);
 			String s9=c.getString(9);
 			String s10=c.getString(10);
-			String[] arr={s1,s2,s3,s4,s5,s6,s7,s8,s9,s10};
+			String arr="Name:"+s1+"\n"+"Artist:"+s2+"\n"+"Date:"+s3+"\n"+"Genre:"+s4+"\n"+"Country:"+s5+"\n"+"length:"+s6+"\n"+"Explicitness:"+s7+"\n"+"Url:"+s8+"\n"+"Lyrics:"+s9+"\n"+"Score:"+s10;
 			
 			return arr;
 		}
@@ -324,15 +317,11 @@ public class DataM {
 		}
 		return null;
 	}*/
-	public void updateEntry(long lRow,int score) throws SQLException{
+	public void updateEntry(long lRow,String score) throws SQLException{
 		// TODO Auto-generated method stub
 		ContentValues cvUpdate= new ContentValues();
 		cvUpdate.put(KEY_SCORE, score);
-//		cvUpdate.put(KEY_MEM2, mMem2);
-//		cvUpdate.put(KEY_MEM3, mMem3);
-//		cvUpdate.put(KEY_MEM4, mMem4);
-//		cvUpdate.put(KEY_MEM5, mMem5);
-//		cvUpdate.put(KEY_MEM6, mMem6);
+
 		
 		ourDatabase.update(DATABASE_TABLE,cvUpdate,KEY_ROWID +"="+ lRow,null);
 		
