@@ -1,6 +1,8 @@
 package yatna.mediadict;
 
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.text.ParseException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,24 +24,27 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.*;
-import android.widget.RatingBar.OnRatingBarChangeListener;
 
-public class Movies extends Activity implements OnClickListener, OnRatingBarChangeListener{
+
+public class Movies extends Activity implements OnClickListener{
 
 	
 	 EditText keyword,keyword2;
 	 RatingBar rate;
 	 String term="",entity="movie";
-	 Button search,play;
-	 WebView ourBrowser;
-	TextView tv1,tv2;
+	 Button search,play,newentry,listen,MediaDict;
+	 WebView ourBrowser,ourBrowser2;
+	TextView tv1,tv2,tv3,tv4,tv5;
 	HttpClient client;
 	String returned=" ";
-	String ultimate;
+	String ultimate,desc;
 	JSONObject json;
 	JSONArray arr;
+	String r;
 	Toast t;
 	static String URL= "https://itunes.apple.com/search?";
+	static String URL2= "http://www.myapifilms.com/imdb?title=";
+	static String URL3="http://www.myapifilms.com/imdb/inTheaters?format=JSON&lang=en-us";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -49,6 +54,9 @@ public class Movies extends Activity implements OnClickListener, OnRatingBarChan
 		 ourBrowser.getSettings().setJavaScriptEnabled(true);
 	        ourBrowser.getSettings().setLoadWithOverviewMode(true);
 	        ourBrowser.getSettings().setUseWideViewPort(true);
+	        ourBrowser2.getSettings().setJavaScriptEnabled(true);
+	        ourBrowser2.getSettings().setLoadWithOverviewMode(true);
+	        ourBrowser2.getSettings().setUseWideViewPort(true);
 	}
 
 	  private void initialize()
@@ -58,13 +66,24 @@ public class Movies extends Activity implements OnClickListener, OnRatingBarChan
 	  	keyword2=(EditText)findViewById(R.id.et2);
 	  	tv1=(TextView)findViewById(R.id.tv1);
 	  	tv2=(TextView)findViewById(R.id.tv2);
-	  	search=(Button)findViewById(R.id.b1);
+	  
+	  	tv4=(TextView)findViewById(R.id.tv4);
+	  	tv5=(TextView)findViewById(R.id.tv5);
+	  	
 	  	ourBrowser=(WebView)findViewById(R.id.wb1);
-	  	search.setOnClickListener(this);
+	  	ourBrowser2=(WebView)findViewById(R.id.wb2);
+	  	
+	  	search=(Button)findViewById(R.id.b1);
+	  	newentry=(Button)findViewById(R.id.b3);
 	  	play=(Button)findViewById(R.id.b2);
+	  	listen=(Button)findViewById(R.id.b4);
+	  	MediaDict=(Button)findViewById(R.id.b5);
 	  	play.setOnClickListener(this);
-	  	rate=(RatingBar)findViewById(R.id.rb1);
-		rate.setOnRatingBarChangeListener(this);
+	  	listen.setOnClickListener(this);
+	  	newentry.setOnClickListener(this);
+	  	search.setOnClickListener(this);
+	  	MediaDict.setOnClickListener(this);
+	  	
 	  	
 	  }
 		
@@ -151,7 +170,27 @@ public class Movies extends Activity implements OnClickListener, OnRatingBarChan
 			case R.id.b2:
 				term=keyword2.getText().toString();
 				new Read2().execute("artworkUrl100");
+				newentry.setEnabled(true);
+				listen.setEnabled(true);
+				MediaDict.setEnabled(true);
 			    break;
+			case R.id.b3:
+				new getNew().execute("title","plot","rating");
+			    break;
+            case R.id.b4:
+				
+            	try{
+             		ourBrowser2.loadUrl("http://tts-api.com/tts.mp3?q="+desc);
+             		}
+             		catch(Exception e){
+             			e.printStackTrace();
+             		}
+			    break;
+            case R.id.b5:
+				new getScore().execute("metascore","votes");
+            		
+			    break;
+			
 			}
 		}
 		
@@ -211,6 +250,8 @@ public class Movies extends Activity implements OnClickListener, OnRatingBarChan
 			    		"Country:" +result[4] + "\n" +
 			    		"Track URL:" +result[8] ;
 				tv2.setText(finalResult);
+				desc=result[3];
+				term=result[1];
 				ourBrowser.loadUrl(result[0]);
 			}
 			
@@ -220,11 +261,147 @@ public class Movies extends Activity implements OnClickListener, OnRatingBarChan
 		}
 
 
-		@Override
-		public void onRatingChanged(RatingBar arg0, float arg1, boolean arg2) {
-			// TODO Auto-generated method stub
-			Toast.makeText(Movies.this, String.valueOf(arg1), Toast.LENGTH_SHORT).show();
+		
+		
+		
+		public JSONObject lastScore(String username)throws ClientProtocolException,IOException,JSONException{
+			StringBuilder url= new StringBuilder(URL2);
+			url.append(username);
 			
+			HttpGet get =new HttpGet(url.toString());
+			HttpResponse r= client.execute(get);
+			int status=r.getStatusLine().getStatusCode();
+			if(status==200){
+				HttpEntity e=r.getEntity();
+				String data=EntityUtils.toString(e);
+
+	     		JSONArray obj=new JSONArray(data);
+	     		JSONObject timeline = obj.getJSONObject(0);
+
+	     		return timeline;
+	     	
+			}
+			else{
+				t=Toast.makeText(Movies.this,"error",Toast.LENGTH_SHORT);
+				t.show();
+				return null;
+			}
 		}
+	    public class getScore extends AsyncTask<String, Integer, String[]>{
+
+			@Override
+			protected String[] doInBackground(String... params) {
+				// TODO Auto-generated method stub
+				try {
+	               
+				json=lastScore(term);
+					String s1=json.getString("metascore");
+					String s2=json.getString("votes");
+					String[] r={s1,s2};
+					
+					
+					return r;
+					
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+					
+				}
+				return null;
+			}
+			
+			protected void onPostExecute(String[] result) {
+				// TODO Auto-generated method stub
+				String[] a=result[0].split("/");
+				int meta =Integer.parseInt(a[0]);
+				String[] b=result[1].split(",");
+				String c=b[0]+b[1];
+				int votes =Integer.parseInt(c);
+
+				int final_score=meta +(votes/50000);
+				tv5.setText(""+final_score+ "   "+result[0]+ "  "+ result[1]);
+				
+				
+				
+			}
+	    }
+		
+
+	    public JSONArray New()throws ClientProtocolException,IOException,JSONException{
+			StringBuilder url= new StringBuilder(URL3);
+			//url.append(username);
+			
+			HttpGet get =new HttpGet(url.toString());
+			HttpResponse r= client.execute(get);
+			int status=r.getStatusLine().getStatusCode();
+			if(status==200){
+				HttpEntity e=r.getEntity();
+				String data=EntityUtils.toString(e);
+
+	     		JSONArray obj=new JSONArray(data);
+	     		JSONObject timeline = obj.getJSONObject(0);
+	     		
+
+	     		return timeline.getJSONArray("movies");
+	     	
+			}
+			else{
+				t=Toast.makeText(Movies.this,"error",Toast.LENGTH_SHORT);
+				t.show();
+				return null;
+			}
+		}
+	    public class getNew extends AsyncTask<String, Integer, String>{
+
+			@Override
+			protected String doInBackground(String... params) {
+				// TODO Auto-generated method stub
+				try {
+	               
+				arr=New();
+				for (int i=0;i<10;i++)
+				{
+					 r=r+arr.getJSONObject(i).getString("title")+"\n"+arr.getJSONObject(i).getString("plot")+"\n"+arr.getJSONObject(i).getString("rating")+"\n\n";
+					 
+				}
+					
+					return r;
+					
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+					
+				}
+				return null;
+			}
+			
+			protected void onPostExecute(String result) {
+				// TODO Auto-generated method stub
+			tv4.setText(r);	
+			}
+	    }
+		
 
 }
