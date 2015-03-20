@@ -32,7 +32,7 @@ public class Home extends Activity implements OnClickListener{
 	TextView tv1,tv2;
 	HttpClient client;
 	String returned=" ";
-	String ultimate="",mausam;
+	String ultimate="",mausam="";
 	String longitude="",latitude="",country="",artist;
 	JSONObject json;
 	JSONArray arr;
@@ -59,8 +59,8 @@ public class Home extends Activity implements OnClickListener{
 		specs.setIndicator("About");
 		th.addTab(specs);
 		client = new DefaultHttpClient();
-		new Read().execute("country","longitude","latitude");
-		new Read2().execute();
+//		new Read().execute("country","longitude","latitude");
+//		new Read2().execute();
        
     }
     
@@ -131,9 +131,9 @@ public class Home extends Activity implements OnClickListener{
 		}
 
 		protected void onPostExecute(String[] result) {
-			longitude=result[0];
-			latitude=result[1];
-			country=result[2];
+			longitude=result[1];
+			latitude=result[2];
+			country=result[0];
 			
 		}
     }
@@ -173,10 +173,10 @@ public class Home extends Activity implements OnClickListener{
 
 				arr=lastTweet2("lat="+latitude+"&"+"lon="+longitude);
 
-			 mausam=arr.getJSONObject(0).getString("main");
+			 String s1=arr.getJSONObject(0).getString("main");
 				String s2=arr.getJSONObject(0).getString("description");
 				
-				String[] ary={mausam,s2};
+				String[] ary={s1,s2};
 
 				return ary;
 				
@@ -197,8 +197,8 @@ public class Home extends Activity implements OnClickListener{
 		}
 
 		protected void onPostExecute(String[] result) {
-			
-			tv1.setText("You are currently at "+latitude +"latitude and "+longitude +" longitude.\nCurrently the weather is "+ result[1]);
+			mausam=result[0];
+			tv1.setText("You are currently at "+latitude +" latitude and "+longitude +" longitude.\nCurrently the weather is "+ result[1]);
 		}
     }
     
@@ -315,7 +315,7 @@ public class Home extends Activity implements OnClickListener{
             JSONObject obj=new JSONObject(data);
             JSONArray timeline = obj.getJSONArray("results");
             Random ran = new Random();
-            int x = ran.nextInt(50);
+            int x = ran.nextInt(10)+1;
             return timeline.getJSONObject(x);
      		
 			
@@ -332,8 +332,8 @@ public class Home extends Activity implements OnClickListener{
 		protected String[] doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			try {
-
-				json=lastTweet("term="+artist +"&entity=musicVideo");
+                 String a="term="+artist +"&entity=musicVideo";
+				json=lastTweet4(a);
 				String s1=json.getString("trackName");
 				String s2=json.getString("trackViewUrl");
 				
