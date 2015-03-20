@@ -54,7 +54,9 @@ String ultimate,song_lyr;
 JSONObject json;
 JSONArray arr;
 Toast t;
-String artist,song;
+String artist,song,rating;
+String[] strArr;
+
 
 static String URL= "https://itunes.apple.com/search?";
 static String URL2="http://lyrics.wikia.com/api.php?func=getSong&artist=";
@@ -190,7 +192,8 @@ static String URL3= "https://itunes.apple.com/lookup?";
 			term=keyword2.getText().toString();
 			new Read2().execute("artworkUrl100");
 			More.setEnabled(true);
-			More.setText("More By"+ artist);
+			lyrics.setEnabled(true);
+			
 		    break;
 		case R.id.b3:
 			Boolean didItWork = true;
@@ -199,7 +202,7 @@ static String URL3= "https://itunes.apple.com/lookup?";
 
 				DataM entry = new DataM(MainActivity.this);
 				entry.open();
-				//entry.createEntry(strArr[1],strArr[2],strArr[3],strArr[4],strArr[5],strArr[6],strArr[7],strArr[8],strArr[9],strArr[10],strArr[11]);
+				entry.createEntry(strArr[1],strArr[2],strArr[3],strArr[4],strArr[5],strArr[6],strArr[7],strArr[8],strArr[9],rating);
 				entry.close();
 			} catch (Exception e) {
 				didItWork = false;
@@ -213,9 +216,9 @@ static String URL3= "https://itunes.apple.com/lookup?";
 			} finally {
 				if (didItWork == true) {
 					Dialog d = new Dialog(this);
-					d.setTitle("Heck Yeah");
+					d.setTitle("Done ");
 					TextView tv = new TextView(this);
-					tv.setText("New Group Added");
+					tv.setText("New Entry Saved");
 					d.setContentView(tv);
 					d.show();
 				}
@@ -260,8 +263,9 @@ static String URL3= "https://itunes.apple.com/lookup?";
 				String s9=arr.getJSONObject(0).getString("releaseDate");
 				artistId=arr.getJSONObject(0).getString("artistId");
 				
-				 String[] strArr={s0,s1,s2,s3,s4,s5,s6,s7,s8,s9};
-				return strArr;
+				 String[] Arr={s0,s1,s2,s3,s4,s5,s6,s7,s8,s9};
+				 strArr=Arr;
+				return Arr;
 				
 				
 			} catch (ClientProtocolException e) {
@@ -297,6 +301,7 @@ static String URL3= "https://itunes.apple.com/lookup?";
 		    song=result[1];
 			tv2.setText(finalResult);
 			ourBrowser.loadUrl(result[0]);
+			More.setText("More By "+ artist);
 		}
 		
 		
@@ -311,6 +316,7 @@ static String URL3= "https://itunes.apple.com/lookup?";
 		Toast.makeText(MainActivity.this, String.valueOf(arg1), Toast.LENGTH_SHORT).show();
 		if(arg1>0){
 			save.setEnabled(true);
+			rating=""+arg1;
 		}
 		
 	}
@@ -370,6 +376,7 @@ static String URL3= "https://itunes.apple.com/lookup?";
 		
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
+			strArr[9]=result;
 			tv3.setText(result);
 
 		}
