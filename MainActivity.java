@@ -208,9 +208,9 @@ static String URL3= "https://itunes.apple.com/lookup?";
 				didItWork = false;
 				Dialog d = new Dialog(this);
 				String error = e.toString();
-				d.setTitle("Dang !!");
+				d.setTitle("Oops !!");
 				TextView tv = new TextView(this);
-				tv.setText(error);
+				tv.setText("Invalid Entry");
 				d.setContentView(tv);
 				d.show();
 			} finally {
