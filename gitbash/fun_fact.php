@@ -18,8 +18,8 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
    
-echo "id: ", json_encode ($row["id"]),"\n";
-echo "fact: ", json_encode ($row["fact"]);
+echo " { \"id\": ", json_encode ($row["id"]),"\n";
+echo " \"fact\": ", json_encode ($row["fact"]),"}";
     }
 } else {
     echo "0 results";
