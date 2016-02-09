@@ -1,0 +1,37 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+
+<RelativeLayout
+     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="test.com.carwash.History"
+    android:weightSum="1">
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/my_toolbar" />
+
+    <TextView android:text="History"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/com_facebook_button_grey_focused"
+        android:layout_below="@+id/app_bar"
+        android:textColor="#212121"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:textSize="20dp"
+
+        android:id="@+id/h1"/>
+
+
+
+</RelativeLayout>
+</ScrollView>

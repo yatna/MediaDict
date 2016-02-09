@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.eduapp.Signup"
+        android:orientation="vertical"
+        android:background="#fff">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:text="FIRST NAME"></TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:inputType="textCapWords"
+            >
+
+        </EditText>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:text="LAST NAME"></TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:inputType="textCapWords"
+            >
+
+        </EditText>"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:text="ENTER YOUR MOBILE NUMBER"></TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:inputType="number"
+            >
+
+        </EditText>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:text="ENTER YOUR EMAIL ID"></TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:inputType="textEmailAddress"
+            >
+
+        </EditText>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:text="ENTER YOUR ADDRESS"></TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:inputType="text"
+            >
+
+        </EditText>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:text="ENTER YOUR CITY"></TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:inputType="text"
+            >
+
+        </EditText>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:text="ENTER YOUR STATE"></TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:inputType="text"
+            >
+
+        </EditText>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:text="CREATE PASSWORD"></TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.eduapp.Signup"
+            android:inputType="textPassword"
+            android:hint="minimum 8 characters"
+            >
+
+        </EditText>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:background="@layout/button_selector"
+
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip"
+            android:text="SUBMIT"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="100dp"
+            android:onClick="submit"/>
+
+    </LinearLayout>
+</ScrollView>

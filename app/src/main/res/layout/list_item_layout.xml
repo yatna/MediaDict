@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name:"
+        android:textColor="#212121"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/PlaceName"
+        android:layout_alignParentTop="true"
+        android:padding="5dp"
+        android:layout_margin="5dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Place Name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/tvPlaceName"
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/PlaceName"
+        android:layout_centerHorizontal="true" />
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Distance:"
+            android:textColor="#212121"
+            android:id="@+id/Distance"
+            android:padding="5dp"
+            android:layout_below="@+id/tvPlaceName"
+            android:layout_alignStart="@+id/Phone" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="distance"
+        android:id="@+id/tvlDistance"
+        android:padding="5dp"
+        android:layout_alignTop="@+id/Distance"
+        android:layout_toEndOf="@+id/Distance" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Duration:"
+            android:textColor="#212121"
+            android:id="@+id/Duration"
+            android:padding="5dp"
+            android:layout_above="@+id/Phone"
+            android:layout_alignStart="@+id/Phone" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="duration"
+        android:id="@+id/tvlDuration"
+        android:padding="5dp"
+        android:layout_below="@+id/tvlDistance"
+        android:layout_alignEnd="@+id/tvlDistance" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Phone:"
+            android:textColor="#212121"
+            android:id="@+id/Phone"
+            android:padding="5dp"
+            android:layout_below="@+id/tvlDuration"
+            android:layout_alignEnd="@+id/tvlAddress" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="phone"
+        android:id="@+id/tvlPhone"
+        android:padding="5dp"
+        android:layout_alignTop="@+id/Phone"
+        android:layout_alignStart="@+id/tvlDuration" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Address:"
+            android:textColor="#212121"
+        android:id="@+id/Address"
+        android:padding="5dp"
+
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/Phone"
+        android:layout_alignStart="@+id/tvPlaceName" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rel"
+        android:layout_below="@+id/Address">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Address"
+        android:id="@+id/tvlAddress"
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        />
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:text="More"
+        android:onClick="more"
+        android:id="@+id/button6"
+        android:layout_below="@+id/rel"
+
+        android:layout_alignEnd="@+id/tvPlaceName" />
+
+
+
+</RelativeLayout>

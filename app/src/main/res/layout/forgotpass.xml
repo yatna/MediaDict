@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textCursorDrawable="@drawable/color_cursor"
+android:hint="Enter your Email-Id"
+        android:id="@+id/et3"
+        android:layout_marginBottom="81dp"
+        android:layout_above="@+id/et4"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et4"
+        android:textCursorDrawable="@drawable/color_cursor"
+       android:hint="Enter Your Registered Phone Number"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#689F38"
+        android:text="Enter"
+        android:id="@+id/b"
+        android:onClick="ok"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="64dp" />
+
+</RelativeLayout>

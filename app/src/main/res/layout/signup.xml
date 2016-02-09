@@ -1,0 +1,62 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.eduapp.Signup"
+    android:orientation="vertical"
+    android:background="#fff"
+
+
+    >
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="170dip"
+        android:layout_height="wrap_content"
+        android:background="@layout/button_selector"
+        android:paddingTop="5dip"
+        android:text="LOGIN WITH FACEBOOK"
+        android:textColor="#ffffff"
+        android:onClick="loginf"
+
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/login1"
+        android:layout_alignStart="@+id/login1" />
+    <Button
+        android:id="@+id/login1"
+        android:layout_width="170dip"
+        android:layout_height="wrap_content"
+        android:background="@layout/button_selector"
+        android:paddingTop="5dip"
+        android:text="LOGIN WITH GOOGLE"
+        android:textColor="#ffffff"
+        android:onClick="loging"
+
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp" />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="170dip"
+        android:layout_height="wrap_content"
+        android:background="@layout/button_selector"
+        android:paddingTop="5dip"
+        android:text="SIGN UP WITH EMAIL"
+        android:textColor="#ffffff"
+        android:onClick="enter_details"
+
+        android:layout_marginBottom="99dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/login"
+        android:layout_alignStart="@+id/login" />
+
+
+
+
+
+</RelativeLayout>
