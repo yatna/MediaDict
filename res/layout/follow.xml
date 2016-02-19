@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:padding="10dp">
+
+    <TextView
+       
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notifications"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:paddingBottom="15dp"
+        android:layout_gravity="center_horizontal"/>"
+    <ScrollView 
+     android:layout_width="wrap_content"
+        android:layout_height="70dp">
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" 
+        android:autoLink="web"
+        android:textStyle="italic"
+        android:paddingBottom="15dp"
+       />
+    
+</ScrollView>
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="View Artists Being Followed" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         />
+
+    <EditText
+        android:id="@+id/et1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" 
+        android:textSize="15dp"
+        android:hint="Name of the Artist you want to Follow">
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/b2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Follow" />
+
+    <EditText
+        android:id="@+id/et2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+         android:textSize="15dp"
+        android:hint="Id of the artist you want to unfollow"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/b3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Unfollow" />
+
+</LinearLayout>

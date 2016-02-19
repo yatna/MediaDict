@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:padding="15dp">
+    
+     
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View list" 
+       
+        />
+    
+     <EditText
+          android:layout_marginTop="20dp"
+        android:id="@+id/et1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" 
+        android:hint="Enter the GroupId "
+        android:inputType="number"
+        >
+
+        <requestFocus />
+    </EditText>
+    
+     <Button
+        android:id="@+id/b2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Entry" 
+         android:autoLink="web"
+         android:paddingBottom="15dp"
+         
+       
+        />
+     <ScrollView 
+         android:layout_width="match_parent"
+        android:layout_height="100dp">
+      <TextView
+        android:id="@+id/tv1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Details:" 
+         />
+      </ScrollView>
+    
+    <TextView
+        
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="New score:" 
+         android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <RatingBar
+        android:id="@+id/rb1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+ 
+    
+    <Button
+        android:id="@+id/b3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Score" 
+        android:enabled="false"
+        
+        />
+   
+    
+     <Button
+        android:id="@+id/b4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Entry"
+          
+       
+        />
+   
+    
+
+</LinearLayout>

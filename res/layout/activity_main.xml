@@ -1,0 +1,180 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" 
+    android:orientation="vertical"
+    android:padding="10dp">
+
+  
+    <LinearLayout 
+     android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+    <EditText
+        android:id="@+id/et1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" 
+         android:layout_weight="20"
+         android:hint="Enter a keyword">
+
+        <requestFocus />
+    </EditText>
+    
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go" 
+         android:layout_weight="80"
+        />
+    
+    </LinearLayout>
+
+   
+    
+
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:paddingTop="10dp"
+        android:textSize="19dp" 
+         android:autoLink="web"
+         android:layout_gravity="center_horizontal"/>
+
+       
+    </ScrollView>
+    
+   "
+    
+    
+    <LinearLayout 
+     android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+    <EditText
+        android:id="@+id/et2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" 
+         android:layout_weight="20"
+         android:hint="Enter a song">
+
+        <requestFocus />
+    </EditText>
+    
+    <Button
+        android:id="@+id/b2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go" 
+         android:layout_weight="80"
+        />
+    
+    </LinearLayout>
+     
+<ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:orientation="vertical">
+   
+     <WebView 
+         android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:id="@+id/wb1"
+       />
+     
+      <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="display"
+        />
+      
+      
+      <TextView
+       
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate n Save"
+        />
+      
+
+   
+       <RatingBar
+         android:id="@+id/rb1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" />
+       
+       <LinearLayout
+           android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal"> 
+          <Button
+        android:id="@+id/b3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Save" 
+         android:layout_weight="50"
+         android:enabled="false"
+        />
+            <Button
+        android:id="@+id/b4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Database" 
+         android:layout_weight="50"
+        />
+           </LinearLayout>
+            <Button
+        android:id="@+id/b5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Lyrics" 
+        android:enabled="false"
+         
+        />
+            
+             <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lyrics"
+        />
+              <Button
+        android:id="@+id/b6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Latest by" 
+        android:enabled="false"
+        
+        />
+            
+             <TextView
+        android:id="@+id/tv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="more by"
+        
+        
+        />
+            </LinearLayout>
+    </ScrollView>
+       
+      
+    
+
+    
+
+</LinearLayout>

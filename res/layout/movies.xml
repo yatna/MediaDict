@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search" />
+    
+    
+    <LinearLayout 
+     android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+    <EditText
+        android:id="@+id/et1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" 
+         android:layout_weight="20"
+         android:hint="Enter a keyword">
+
+        <requestFocus />
+    </EditText>
+    
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go" 
+         android:layout_weight="80"
+        />
+    
+    </LinearLayout>
+
+   
+    
+
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:autoLink="web"
+        />
+    </ScrollView>
+    
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play" />
+    
+    
+    <LinearLayout 
+     android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+    <EditText
+        android:id="@+id/et2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" 
+         android:layout_weight="20"
+         android:hint="Enter a movie">
+
+        <requestFocus />
+    </EditText>
+    
+    <Button
+        android:id="@+id/b2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go" 
+         android:layout_weight="80"
+        />
+    
+    </LinearLayout>
+     <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="vertical">
+
+   
+     <WebView 
+         android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:id="@+id/wb1"
+       />
+     
+      <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="display"
+         android:autoLink="web"
+        />
+      
+       <Button
+        android:id="@+id/b5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MediaDict Rating" 
+        android:enabled="false"
+         
+        />
+        <TextView
+        android:id="@+id/tv5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="score"
+        />
+      
+       <Button
+        android:id="@+id/b4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Listen" 
+        android:enabled="false"
+         
+        />
+        <Button
+        android:id="@+id/b3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Realease" 
+        android:enabled="false"
+         
+        />
+       <TextView
+        android:id="@+id/tv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="new release"
+        />
+        <WebView 
+         android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:id="@+id/wb2"
+       />
+      
+     </LinearLayout>
+    </ScrollView>
+
+    
+    
+
+</LinearLayout>

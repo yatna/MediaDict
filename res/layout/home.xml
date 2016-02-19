@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:padding="10dp"
+   
+    >
+    
+     <TabHost
+        android:id="@+id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" 
+                    android:orientation="vertical"
+                     android:layout_marginTop="30dp">
+
+                 
+
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Music"
+        android:textStyle="bold"
+       />
+
+    <Button
+        android:id="@+id/b2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Movies"
+         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/b3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Tv Series" 
+        android:layout_marginBottom="10dp"
+         android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:textStyle="italic"
+        android:paddingBottom="15dp" />
+    
+     <Button
+        android:id="@+id/b4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="Listen songs according to the Weather Outside " />
+     
+       <Button
+        android:id="@+id/b6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="View Notifications" /> 
+      <LinearLayout 
+           android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:paddingTop="30dp">"
+     <TextView
+        android:id="@+id/tv2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+              android:layout_weight="80"
+         />
+    
+     <Button
+        android:id="@+id/b5"
+         android:gravity="center_horizontal"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+       android:background="@drawable/custom" 
+       android:layout_weight="20"/>  
+       </LinearLayout>
+     
+    
+    </LinearLayout>
+     <LinearLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="15dp" >
+    
+         <TextView
+        
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="MediaDict is a user friendly app for organizing and having fun with media  be it in the form of music, movies or TV series."
+        android:textSize="17dp"
+       />
+   
+       
+       
+    </LinearLayout>
+     </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+</LinearLayout>

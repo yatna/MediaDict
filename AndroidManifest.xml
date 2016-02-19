@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="yatna.mediadict"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="16" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+         android:theme="@android:style/Theme.Black"  >
+        
+        <activity
+            android:name="yatna.mediadict.Splash"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         
+         <activity
+            android:name="yatna.mediadict.Home"
+            android:label="@string/app_name"
+           >
+            <intent-filter>
+                <action android:name="yatna.HOME" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+         <activity
+            android:name="yatna.mediadict.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="yatna.MUSIC" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="yatna.mediadict.Movies"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="yatna.MOVIES" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="yatna.mediadict.TvSeries"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="yatna.TVSERIES" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+         <activity
+            android:name="yatna.mediadict.DatabaseM"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="yatna.DATAPAGE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="yatna.mediadict.DataViewM"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="yatna.DATAVIEWM" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+          <activity
+            android:name="yatna.mediadict.Following"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="yatna.FOLLOWING" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+      
+    </application>
+
+</manifest>
